@@ -1,87 +1,159 @@
-# import streamlit as st
-# import pandas as pd
-# from sklearn.model_selection import train_test_split
-# from sklearn.linear_model import LinearRegression
-# from sklearn.metrics import mean_squared_error
-# import numpy as np
-# from sklearn.neighbors import KNeighborsRegressor
+# # import streamlit as st
+# # import pandas as pd
+# # from sklearn.model_selection import train_test_split
+# # from sklearn.linear_model import LinearRegression
+# # from sklearn.metrics import mean_squared_error
+# # import numpy as np
+# # from sklearn.neighbors import KNeighborsRegressor
 
-# st.title('Linear Regression Web App')
-# option=st.selectbox("Select model",["Liner regression", "KNN"])
-# st.title(option)
-# uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
-# if option=="Liner regression":
-#     if uploaded_file:
+# # st.title('Linear Regression Web App')
+# # option=st.selectbox("Select model",["Liner regression", "KNN"])
+# # st.title(option)
+# # uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
+# # if option=="Liner regression":
+# #     if uploaded_file:
         
-#         df = pd.read_csv(uploaded_file)
-#         st.write("### Data Preview")
-#         st.write(df.head())
+# #         df = pd.read_csv(uploaded_file)
+# #         st.write("### Data Preview")
+# #         st.write(df.head())
 
-#         target_variable = st.selectbox("Select the target variable (Y)", df.columns)
+# #         target_variable = st.selectbox("Select the target variable (Y)", df.columns)
         
-#         feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[col for col in df.columns if col != target_variable])
+# #         feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[col for col in df.columns if col != target_variable])
         
-#         if target_variable and len(feature_variables) > 0:
-#             X = df[feature_variables]
-#             y = df[target_variable]
+# #         if target_variable and len(feature_variables) > 0:
+# #             X = df[feature_variables]
+# #             y = df[target_variable]
 
 
-#             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# #             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             
 
-#             model = LinearRegression()
-#             model.fit(X_train, y_train)
+# #             model = LinearRegression()
+# #             model.fit(X_train, y_train)
     
-#             predictions = model.predict(X_test)
-#             mse = mean_squared_error(y_test, predictions)
+# #             predictions = model.predict(X_test)
+# #             mse = mean_squared_error(y_test, predictions)
 
-#             st.write("### Model Performance")
-#             st.write(f"Mean Squared Error: {mse:.2f}")
+# #             st.write("### Model Performance")
+# #             st.write(f"Mean Squared Error: {mse:.2f}")
 
 
-#             st.write("### Make Predictions")
-#             input_data = {}
-#             for feature in feature_variables:
-#                 value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
-#                 input_data[feature] = value
-#             input_df = pd.DataFrame([input_data])
-#             prediction_result = model.predict(input_df)[0]
+# #             st.write("### Make Predictions")
+# #             input_data = {}
+# #             for feature in feature_variables:
+# #                 value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
+# #                 input_data[feature] = value
+# #             input_df = pd.DataFrame([input_data])
+# #             prediction_result = model.predict(input_df)[0]
 
-#             st.write("### Prediction Result")
-#             st.write(f"Predicted {target_variable}: {prediction_result:.2f}")
-# if option=="KNN":
-#     if uploaded_file:
-#         df = pd.read_csv(uploaded_file)
-#         st.write("### Data Preview")
-#         st.write(df.head())
-#         target_variable = st.selectbox("Select the target variable (Y)", df.columns)
-#         feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[
-#             col for col in df.columns if col != target_variable])
-#         if target_variable and len(feature_variables) > 0:
-#             X = df[feature_variables]
-#             y = df[target_variable]
-#             X_train, X_test, y_train, y_test = train_test_split(X, y,
-#                                                                 test_size=0.2, random_state=42)
-#             model = KNeighborsRegressor()
-#             model.fit(X_train, y_train)
-#             predictions = model.predict(X_test)
-#             mse = mean_squared_error(y_test, predictions)
-#             st.write("### Model Performance")
-#             st.write(f"Mean Squared Error: {mse:.2f}")
-#             st.write("### Make Predictions")
-#             input_data = {}
-#             for feature in feature_variables:
-#                 value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
-#                 input_data[feature] = value
-#                 input_df = pd.DataFrame([input_data])
-#                 prediction_result = model.predict(input_df)[0]
-#                 st.write("### Prediction Result")
-#                 st.write(f"Predicted {target_variable}: {prediction_result:.2f}")
+# #             st.write("### Prediction Result")
+# #             st.write(f"Predicted {target_variable}: {prediction_result:.2f}")
+# # if option=="KNN":
+# #     if uploaded_file:
+# #         df = pd.read_csv(uploaded_file)
+# #         st.write("### Data Preview")
+# #         st.write(df.head())
+# #         target_variable = st.selectbox("Select the target variable (Y)", df.columns)
+# #         feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[
+# #             col for col in df.columns if col != target_variable])
+# #         if target_variable and len(feature_variables) > 0:
+# #             X = df[feature_variables]
+# #             y = df[target_variable]
+# #             X_train, X_test, y_train, y_test = train_test_split(X, y,
+# #                                                                 test_size=0.2, random_state=42)
+# #             model = KNeighborsRegressor()
+# #             model.fit(X_train, y_train)
+# #             predictions = model.predict(X_test)
+# #             mse = mean_squared_error(y_test, predictions)
+# #             st.write("### Model Performance")
+# #             st.write(f"Mean Squared Error: {mse:.2f}")
+# #             st.write("### Make Predictions")
+# #             input_data = {}
+# #             for feature in feature_variables:
+# #                 value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
+# #                 input_data[feature] = value
+# #                 input_df = pd.DataFrame([input_data])
+# #                 prediction_result = model.predict(input_df)[0]
+# #                 st.write("### Prediction Result")
+# #                 st.write(f"Predicted {target_variable}: {prediction_result:.2f}")
             
     
                     
+# # import streamlit as st
+# # import pandas as pd
+# # from sklearn.model_selection import train_test_split
+# # from sklearn.linear_model import LinearRegression
+# # from sklearn.metrics import mean_squared_error
+# # from sklearn.neighbors import KNeighborsRegressor
+# # from sklearn.preprocessing import LabelEncoder
+# # import numpy as np
+
+# # st.title('Linear Regression Web App')
+# # option = st.selectbox("Select model", ["Linear regression", "KNN"])
+# # st.title(option)
+# # uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
+
+# # if uploaded_file:
+# #     df = pd.read_csv(uploaded_file)
+# #     st.write("### Data Preview")
+# #     st.write(df.head())
+
+# #     target_variable = st.selectbox("Select the target variable (Y)", df.columns)
+# #     feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[col for col in df.columns if col != target_variable])
+
+# #     if target_variable and len(feature_variables) > 0:
+# #         X = df[feature_variables]
+# #         y = df[target_variable]
+
+        
+# #         for col in X.columns:
+# #             if X[col].dtype == 'object':
+# #                 le = LabelEncoder()
+# #                 X[col] = le.fit_transform(X[col])
+
+# #         if y.dtype == 'object':
+# #             le_y = LabelEncoder()
+# #             y = le_y.fit_transform(y)
+
+# #         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# #         if option == "Linear regression":
+# #             model = LinearRegression()
+# #         elif option == "KNN":
+# #             model = KNeighborsRegressor()
+
+# #         model.fit(X_train, y_train)
+# #         predictions = model.predict(X_test)
+# #         mse = mean_squared_error(y_test, predictions)
+
+# #         st.write("### Model Performance")
+# #         st.write(f"Mean Squared Error: {mse:.2f}")
+
+# #         st.write("### Make Predictions")
+# #         input_data = {}
+# #         for feature in feature_variables:
+# #             value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
+# #             input_data[feature] = value
+        
+# #         input_df = pd.DataFrame([input_data])
+
+# #         for col in input_df.columns:
+# #             if df[col].dtype == 'object':
+# #                 le = LabelEncoder()
+# #                 input_df[col] = le.fit_transform(input_df[col])
+
+# #         prediction_result = model.predict(input_df)[0]
+
+# #         st.write("### Prediction Result")
+# #         st.write(f"Predicted {target_variable}: {prediction_result:.2f}")
+
+
+
 # import streamlit as st
 # import pandas as pd
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 # from sklearn.model_selection import train_test_split
 # from sklearn.linear_model import LinearRegression
 # from sklearn.metrics import mean_squared_error
@@ -89,7 +161,7 @@
 # from sklearn.preprocessing import LabelEncoder
 # import numpy as np
 
-# st.title('Linear Regression Web App')
+# st.title('Regression Web App')
 # option = st.selectbox("Select model", ["Linear regression", "KNN"])
 # st.title(option)
 # uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
@@ -99,6 +171,16 @@
 #     st.write("### Data Preview")
 #     st.write(df.head())
 
+#     st.write("### Data Visualizations")
+#     st.write("#### Pairplot")
+#     sns.pairplot(df)
+#     st.pyplot(plt)
+
+#     st.write("#### Correlation Heatmap")
+#     plt.figure(figsize=(10, 8))
+#     sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+#     st.pyplot(plt)
+
 #     target_variable = st.selectbox("Select the target variable (Y)", df.columns)
 #     feature_variables = st.multiselect("Select the feature variables (X)", df.columns, default=[col for col in df.columns if col != target_variable])
 
@@ -106,7 +188,6 @@
 #         X = df[feature_variables]
 #         y = df[target_variable]
 
-        
 #         for col in X.columns:
 #             if X[col].dtype == 'object':
 #                 le = LabelEncoder()
@@ -129,6 +210,15 @@
 
 #         st.write("### Model Performance")
 #         st.write(f"Mean Squared Error: {mse:.2f}")
+
+#         st.write("#### Predictions vs Actual Values")
+#         plt.figure(figsize=(10, 6))
+#         plt.scatter(y_test, predictions)
+#         plt.plot(y_test, y_test, color='red')  # Identity line
+#         plt.xlabel("Actual Values")
+#         plt.ylabel("Predicted Values")
+#         plt.title("Predictions vs Actual Values")
+#         st.pyplot(plt)
 
 #         st.write("### Make Predictions")
 #         input_data = {}
@@ -155,14 +245,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.metrics import mean_squared_error, accuracy_score
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.svm import SVC, SVR
+from sklearn.naive_bayes import GaussianNB
+from sklearn.cluster import KMeans
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
-st.title('Regression Web App')
-option = st.selectbox("Select model", ["Linear regression", "KNN"])
+st.title('Machine Learning Web App')
+option = st.selectbox("Select model", ["Linear Regression", "KNN", "KMeans", "Decision Tree", "Random Forest", "Logistic Regression", "SVM", "Gaussian Naive Bayes"])
 st.title(option)
 uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
 
@@ -199,22 +294,70 @@ if uploaded_file:
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        if option == "Linear regression":
+        if option == "Linear Regression":
             model = LinearRegression()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            mse = mean_squared_error(y_test, predictions)
+            st.write(f"Mean Squared Error: {mse:.2f}")
+
         elif option == "KNN":
             model = KNeighborsRegressor()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            mse = mean_squared_error(y_test, predictions)
+            st.write(f"Mean Squared Error: {mse:.2f}")
 
-        model.fit(X_train, y_train)
-        predictions = model.predict(X_test)
-        mse = mean_squared_error(y_test, predictions)
+        elif option == "KMeans":
+            model = KMeans(n_clusters=3, random_state=42)
+            kmeans_predictions = model.fit_predict(X)
+            df['Cluster'] = kmeans_predictions
+            st.write("KMeans Clustering Results")
+            st.write(df)
 
-        st.write("### Model Performance")
-        st.write(f"Mean Squared Error: {mse:.2f}")
+        elif option == "Decision Tree":
+            if len(np.unique(y_train)) > 2:
+                model = DecisionTreeRegressor()
+            else:
+                model = DecisionTreeClassifier()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            st.write(f"Accuracy: {accuracy_score(y_test, predictions):.2f}")
+
+        elif option == "Random Forest":
+            if len(np.unique(y_train)) > 2:
+                model = RandomForestRegressor()
+            else:
+                model = RandomForestClassifier()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            st.write(f"Accuracy: {accuracy_score(y_test, predictions):.2f}")
+
+        elif option == "Logistic Regression":
+            model = LogisticRegression(max_iter=200)
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            st.write(f"Accuracy: {accuracy_score(y_test, predictions):.2f}")
+
+        elif option == "SVM":
+            if len(np.unique(y_train)) > 2:
+                model = SVR()
+            else:
+                model = SVC()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            st.write(f"Accuracy: {accuracy_score(y_test, predictions):.2f}")
+
+        elif option == "Gaussian Naive Bayes":
+            model = GaussianNB()
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_test)
+            st.write(f"Accuracy: {accuracy_score(y_test, predictions):.2f}")
 
         st.write("#### Predictions vs Actual Values")
         plt.figure(figsize=(10, 6))
         plt.scatter(y_test, predictions)
-        plt.plot(y_test, y_test, color='red')  # Identity line
+        plt.plot(y_test, y_test, color='red')
         plt.xlabel("Actual Values")
         plt.ylabel("Predicted Values")
         plt.title("Predictions vs Actual Values")
@@ -225,7 +368,7 @@ if uploaded_file:
         for feature in feature_variables:
             value = st.number_input(f"Enter {feature}", value=float(X[feature].mean()))
             input_data[feature] = value
-        
+
         input_df = pd.DataFrame([input_data])
 
         for col in input_df.columns:
